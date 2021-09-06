@@ -1,0 +1,19 @@
+CUDA_VISIBLE_DEVICES=0 python fine_tune.py \
+--dataset cifar10 \
+--arch resnet18_cifar \
+--depth 18 \
+--lr 0.1 \
+--epochs 130 \
+--schedule 70 100 \
+--batch-size 256 \
+--save ./poisonresult/1_retrain_record/EB-30-33 \
+--momentum 0.9 \
+--sparsity-regularization \
+--start-epoch 33 \
+--poison_pre 1 \
+--poison_method 1 \
+--resume_arch ./poisonresult/1_pruned/EB-30-33/pruned.pth.tar \
+--resume_weight ./poisonresult/1_retrain_record/EB-30-33/33checkpoint.pth.tar \
+--resume_folder ./poisonresult/1_retrain_record/EB-30-33/ \
+--csv_file_path1 ./resnet_white_prune_30_no_fine_tune.csv \
+--csv_file_path2 ./resnet_white_prune_30.csv
